@@ -1,0 +1,103 @@
+{% extends 'admin_nav.html' %}
+{% load static %}
+{% block body %}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<style>
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+/* Rounded border */
+hr.rounded {
+  border-top: 8px solid lightblue;
+  border-radius: 5px;
+}
+
+.prjdiv:hover{
+transform:translateY(-10px)
+}
+div .container1{
+
+width:100%;
+background-color:lightgrey;
+border-radius:8px;
+}
+h2, h4{
+ padding:10Px;
+}
+
+</style>
+
+
+<div class="container" style="margin-top:10%;height:150px;width:100%">
+    <div class="row" style="height:90%">
+        <div style="height:100px;" class="col-md-3 prjdiv">
+            <div class="container1">
+            <h2 style="color:blue">{{pending}}</h2>
+            <a href="{% url 'pending_View_Booking' %}"><h4 style="color:black">New Order</h4>
+        </a>
+            </div>
+        </div>
+        <div style="height:100px;" class="col-md-3 prjdiv">
+            <div class="container1">
+            <h2 style="color:blue">{{confirm}}</h2>
+            <a href="{% url 'confirmed_View_Booking' %}"><h4 style="color:black">Confirmed Order</h4>
+
+            </a>
+       </div>
+        </div>
+        <div style="height:100px;" class="col-md-3 prjdiv">
+             <div class="container1">
+            <h2 style="color:blue">{{rejected}}</h2>
+            <a href="{% url 'cancel_view_booking' %}"><h4 style="color:black">Cancel Order</h4>
+        </a>
+             </div>
+        </div>
+         <div style="height:100px;" class="col-md-3 prjdiv">
+             <div class="container1">
+             <h2 style="color:blue">{{all_order}}</h2>
+            <a href="{% url 'Admin_View_Booking' %}"><h4 style="color:black">All Order</h4>
+
+            </a>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+	
+	
+	<footer class="site-footer">
+      <div class="container">
+       
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p style = "font-size : 30pt ; color : #FF0000 ; font-weight : bold">
+            
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved <span style = "color : brown">|</span> <span style = "color : #006400">This website is made with <i class="fas fa-heart icon-heart text-warning" aria-hidden="true"></i> by </span><a class= "glow" href="#" target="_blank" >Pankaj Panjwani</a>
+          
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+	
+{% endblock %}

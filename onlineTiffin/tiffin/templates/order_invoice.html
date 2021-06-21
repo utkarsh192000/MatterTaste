@@ -1,0 +1,46 @@
+{% extends 'admin_nav.html' %}
+{% block body %}
+
+<center><h2 style="font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:2%">Order Invoice</h2></center><hr>
+<div class="container" style="margin-top:5%">
+</div>
+ <div class="container">
+<table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>Sr. No</th>
+    <th>Customer name</th>
+    <th>Booking_Id</th>
+    <th>contact</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Status</th>
+    <th>Detail</th>
+  </tr>
+  </thead>
+   <tbody>
+
+{% for i in book %}
+
+
+  <tr>
+      <td>{{forloop.counter}}</td>
+    <td>{{i.signup.user.first_name}}</td>
+    <td>{{i.book_id}}</td>
+    <td>{{i.signup.contact}}</td>
+    <td>{{i.quantity}}</td>
+      <td>{{i.total}}</td>
+      <td>{{i.status.status}}</td>
+      <td><a href="{% url 'get_invoice' i.id %}"><button class="button button1">Get Invoice</button></a></td>
+  </tr>
+   {% endfor %}
+    </tbody>
+</table>
+ </div>
+<script>
+            var el_up = document.getElementById("GFG_UP");
+
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+        </script>
+{% endblock %}

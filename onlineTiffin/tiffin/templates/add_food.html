@@ -1,0 +1,49 @@
+{% extends 'admin_nav.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:20px" align="center">Add Food</h2><hr>
+
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-md-6">
+     <div class="form-group">
+    <label for="exampleFormControlSelect1">Type</label>
+    <select class="form-control" id="exampleFormControlSelect1"name="type">
+      <option value="veg food">Veg food</option>
+      <option value="non veg food">Non veg food</option>
+    </select>
+     </div></div>
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Food Image</label>
+    <input type="file" class="form-control" id="exampleInputPassword1" name="img" value="choose file">
+</div></div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Food Price</label>
+      <input type="number" class="form-control" name="price" placeholder="Enter Food Price" id="inputEmail4">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Title</label>
+      <input type="text" class="form-control" name="title" placeholder="Enter Title" id="inputEmail4">
+    </div>
+</div>
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" name="detail" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+
+{% if error %}
+<script>
+    alert('1 Food Added Successfully');
+    window.location = "{% url 'view_food' %}";
+</script>
+{% endif %}
+{% endblock %}

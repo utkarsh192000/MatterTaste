@@ -1,0 +1,94 @@
+{% extends 'carousel.html' %}
+{% block body1 %}
+<style>
+.mybtnone:hover{background-color : #800000;
+color : #429E00 ; font-weight : bol
+
+.prjdiv:hover{
+transform:translateY(-20px)
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+</style>
+<div class="container-fluid">
+      <center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:8%"> Available Foods</h2></center>
+<hr>
+	<div class="container">
+ <div class="container-fluid" style="margin-bottom:3%">
+	 <div class="row">
+			{% for j in pro %}
+
+		 <div class="col-md-3 prjdiv" style="border-radius:6px;width:25%;margin-top:1%">
+			 <a href="{% url 'booking_order' j.id %}">
+			 <div class="container">
+					<img class="zoom" align="center" src="{{j.image.url}}" style="width:220px;height:250px" alt="card-img">
+						<p class="card-title" style="color:black;font-weight:bold">{{j.title}} : ${{j.price}}</p>
+		 </div></a>
+			 </div>
+			{% endfor %}
+			
+			
+			<style>
+html{
+scroll-behavior:smooth;
+}
+
+
+/*scroll button start*/
+#scrollbtn
+{
+
+position:fixed;
+bottom:20px;
+right:40px;
+z-index:99;
+border:none;
+color:red;
+background:#00abff;
+padding:10px;
+border-radius:10px;
+}
+/*scroll button end*/
+</style>
+
+ <div class="scrolltop float-right">
+  <i class="fa fa-arrow-up" onclick="topFunction()" id="scrollbtn"></i>
+  </div>
+
+<script>
+  scrollbutton = document.getElementById("scrollbtn"); 
+  window.onscroll = function(){scrollFunction()};
+  
+  function scrollFunction()
+  {
+  if(document.body.scrollTop>20 || document.documentElement.scrollTop>20)
+  {
+  scrollbutton.style.display="block";
+  }
+  else
+  {
+  scrollbutton.style.display="none";
+  }
+  }
+  
+  function topFunction()
+  {
+  document.body.scrollTop = 0;//safari
+  document.documentElement.scrollTop = 0;//for chrome
+  }
+
+</script>  
+			
+		</div>
+	</div>
+ </div>
+
+      </div>
+	  
+{% endblock %}
+
+

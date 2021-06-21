@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<title>Admin Panel</title>
+	<link rel="stylesheet" href="{% static 'style1.css' %}">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel = stylesheet href = "//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+</head>
+<body>
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+  </script>
+
+<style>
+
+.button {
+  background-color: orange; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 1px 1px;
+  cursor: pointer;
+}
+
+
+.button1 {border-radius: 8px;}
+
+  * {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 20%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th {
+  text-align: left;
+  padding: 12px;
+  background-color: Navy;
+  color: white;
+}
+
+
+#myTable td {
+  text-align: left;
+  padding: 12px;
+  background-color: white;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  background-color:#594f8d;
+  color:#fff;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: navy;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+
+}
+
+.nav-link{
+font-size:17px;
+}
+
+.wrapper .sidebar ul .nav-link:hover, li:hover{
+  color: yellow !important;
+  font-size:17px;
+  background-color : blue;
+  border-radius:0 24px 24px 0;
+
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.nav-link:hover a{
+  color: #fff;
+}
+
+
+.navbar-brand:hover{
+  font-weight:bold;
+
+
+}
+
+</style>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li style="margin-bottom:50px"><a href="{% url 'admin_home' %}"><i class="fas fa-home"></i>Dashboard</a></li>
+            <h3 style="color:Darkgrey;margin-bottom:10px">CONTENT</h3>
+            <button class="dropdown dropdown-btn nav-link" style="padding-top:20px;padding-bottom:20px">
+                <a href="#" style="color: #fff"><i class="fas fa-utensils"></i>
+                    Tiffin</a>
+    `           <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <ul>
+                <li><a href="{% url 'add_food' %}">Add Tiffin</a></li>
+                <li><a href="{% url 'view_food' %}">Manage Tiffin</a></li>
+            </ul>
+            </div>
+
+            <button class="dropdown-btn nav-link" style="padding-top:20px;padding-bottom:20px">
+                <a href="" style="color: #fff"><i class="fas fa-car-side"></i>
+                    Order</a>
+    `           <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <ul>
+                <li><a href="{% url 'pending_View_Booking' %}">New Order</a></li>
+                <li><a href="{% url 'confirmed_View_Booking' %}">Confirmed Order</a></li>
+                <li><a href="{% url 'cancel_view_booking' %}">Cancel Order</a></li>
+                <li><a href="{% url 'Admin_View_Booking' %}">All Order</a></li>
+            </ul>
+            </div>
+
+            <li><a href="{% url 'order_invoice' %}"><i class="fas fa-address-book"></i>Invoice</a></li>
+            <li><a href="{% url 'view_user' %}"><i class="fas fa-users"></i>Manage User</a></li>
+            <li><a href="{% url 'view_feedback' %}"><i class="fas fa-comments"></i>User Feedback</a></li>
+</ul>
+
+    </div>
+    <div class="main_content">
+        <div class="header"><div class="topnav">
+  <a class="active" href="#home"><h3><span style="color:red">Online Tiffin</span> <span style="color:green">Service System</span></h3></a>
+
+  <div class="topnav-right">
+    <a href="#search"><i style="padding:4px;border-radius:50%;border:1px solid black" class="fas fa-user"></i>Welcome {{request.user.username}}</a>
+    <a href="{% url 'logout' %}"><i style="padding:4px;bborder:1px solid black" class="fas fa-sign-out-alt"></i>Signout</a>
+  </div>
+</div>
+</div>
+        {% block body %}
+        {% endblock %}
+
+    </div>
+</div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+
+</body>
+</html>

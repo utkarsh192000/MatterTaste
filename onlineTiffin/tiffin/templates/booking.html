@@ -1,0 +1,162 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:10%" align="center">Booking Detail</h2><hr>
+
+<div class="container-fluid" style="">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Booking Id</label>
+      <input type="text" class="form-control" name="fname" value="{{rt}}" id="inputEmail4" readonly>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Customer Name</label>
+      <input type="text" class="form-control" name="name" value="{{request.user.first_name}}" id="inputPassword4" readonly>
+    </div>
+  </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+      <label for="inputPassword4">Email</label>
+      <input type="email" class="form-control" name="email" value="{{request.user.username}}" id="inputPassword4" readonly>
+    </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Contact</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{data.contact}}" name="contact" readonly>
+  </div></div>
+
+    <div class="form-row">
+
+            <div class="form-group col-md-6">
+      <label for="inputPassword4">Order date</label>
+        <input type="text" onload="getDate()" class="form-control" id="date4" name="date3" readonly>
+            </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Time</label>
+    <input type="time" class="form-control" id="exampleInputPassword1" name="time">
+  </div></div>
+
+        <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Address</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Address" name="add">
+  </div>
+            <div class="form-group col-md-6">
+    <label for="exampleInputEmail1">City</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your City" name="city">
+  </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+    <label for="cost">Price</label>
+    <input type="number" class="form-control" value="{{food.price}}" id="cost" name="price">
+  </div>
+
+    <div class="form-group col-md-6">
+    <label for="quantity">Quantity</label>
+    <input type="number" class="form-control" id="quantity" name="quant" onkeyup="calc()">
+  </div>
+
+    </div>
+        <div class="form-row">
+
+        <div class="form-group col-md-6">
+      <label for="startdate">From Date</label>
+      <input type="date" class="form-control" name="date1" id="startdate" oninput="calc()">
+    </div>
+        <div class="form-group col-md-6">
+      <label for="enddate">To Date</label>
+      <input type="date" class="form-control" name="date2" id="enddate" oninput="calc()">
+    </div>
+        </div>
+
+          <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="totalcost">Total Cost</label>
+    <input type="number" class="form-control" id="totalcost" name="total">
+  </div>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="totaldays">Total day</label>
+    <input type="number" class="form-control" id="totaldays" name="day">
+  </div>
+    </div>
+
+  <button style="margin-bottom:5%" type="submit" class="btn btn-primary">confirm</button>
+</form>
+
+        </div>
+        <div class="col-md-6">
+            <img src="{{food.image.url}}" style="width:100%">
+            <h6>Title</h6>
+            <p>{{food.title}} </p>
+             <h6>Cost: ${{food.price}}</h6>
+             <h6>Description</h6>
+            <p>{{food.food_detail}}</p>
+        </div>
+    </div>
+
+</div>
+</div>
+
+{% if error %}
+<script>
+    alert('Booked Successfully');
+</script>
+{% endif %}
+
+<script>
+function getDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+
+  if(dd<10) {
+      dd = '0'+dd
+  }
+
+  if(mm<10) {
+      mm = '0'+mm
+  }
+
+  today = mm + '/' + dd + '/' + yyyy;
+  console.log(today);
+  document.getElementById("date4").value = today;
+}
+
+
+window.onload = function() {
+  getDate();
+}
+
+</script>
+<script>
+function calc()
+{
+    var startdate =new Date(document.getElementById("startdate").value);
+    var enddate = new Date(document.getElementById("enddate").value);
+       var totaldays =  parseInt((enddate-startdate) / (24 * 3600 * 1000));
+
+
+  var quantity = document.getElementById("quantity").value;
+
+     var cost = document.getElementById("cost").value;
+     var totalprice = parseInt(quantity)*parseInt(cost)*parseInt(totaldays);
+
+     document.getElementById("totaldays").value = totaldays;
+	 document.getElementById("totalcost").value = totalprice;
+    }
+</script>
+
+{% endblock %}

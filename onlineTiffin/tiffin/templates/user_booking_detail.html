@@ -1,0 +1,107 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<style>
+.mybtnone:hover{background-color : #800000;
+color : #429E00 ; font-weight : bold;
+}
+</style>
+<div class="container">
+    <h3 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:3%" align="center">Booking & Tiffin Detail</h3><hr>
+
+<div  class="container-fluid" style="width:80%;margin-bottom:5%">
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Booking Id :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.book_id}}
+        </div>
+     </div><hr>
+<div class="row">
+        <div class="col-md-6">
+            <strong>Food Type :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.food.food_name}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Food Title :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.food.title}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Food Description :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.food.food_detail}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Food image :</strong>
+        </div>
+        <div class="col-md-6">
+            <img src="{{pro.food.image.url}}" style="width:150px;height:150px">
+        </div>
+    </div><hr><div class="row">
+        <div class="col-md-6">
+            <strong> Quantity:</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.quantity}}
+        </div>
+     </div><hr><div class="row">
+        <div class="col-md-6">
+            <strong>Food Price :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.food.price}} Rs.
+        </div>
+    </div><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Total :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.total}} Rs.
+        </div>
+    </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>From date :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.from_date}}
+        </div>
+     </div><hr><div class="row">
+        <div class="col-md-6">
+            <strong>To date :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.to_date}}
+        </div>
+    </div><hr><div class="row">
+        <div class="col-md-6">
+            <strong>Total days :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.day1}}
+        </div>
+     </div>
+
+</div>
+</div>
+
+{% endblock %}

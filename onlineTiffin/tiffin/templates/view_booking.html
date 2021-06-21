@@ -1,0 +1,54 @@
+{% extends 'navigation.html' %}
+{% block body %}
+
+<center><h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:7%">View Booking</h2></center><hr>
+<div class="container" style="">
+</div>
+ <div class="container">
+<table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>Sr. No</th>
+    <th>Booking Id</th>
+    <th>From Date</th>
+    <th>To Date</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Status</th>
+      <th>Detail</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+   <tbody>
+
+{% for i in book %}
+
+  <tr>
+      <td>{{forloop.counter}}</td>
+    <td>{{i.book_id}}</td>
+    <td>{{i.from_date}}</td>
+    <td>{{i.to_date}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.total}}</td>
+      <td>{{i.status.status}}</td>
+            <td><a href="{% url 'user_booking_detail' i.id %}"><button class="button button1">detail</button></a></td>
+      {% if i.status.status == "pending" %}
+      <td><a href="{% url 'Cancel_booking' i.id %}" onclick="return confirm('Are you sure?')"><button class="button button1" id="#delete">cancel</button></a></td>
+      {% else %}
+      <td><a href="{% url 'delete_booking' i.id %}" onclick="return confirm('Are you sure?')"><button class="button button1" id="#delete">delete</button></a></td>
+{% endif %}
+  </tr>
+   {% endfor %}
+
+    </tbody>
+</table>
+
+ </div>
+
+<script>
+            var el_up = document.getElementById("GFG_UP");
+
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+        </script>
+{% endblock %}

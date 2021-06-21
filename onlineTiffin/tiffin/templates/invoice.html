@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+</head>
+<style>
+    th,td{
+    text-align:left;
+    font-size:15px;
+    }
+    lable{
+font-size:35px;
+    }
+</style>
+<body>
+    <lable style = "font-family : 'Monotype Corsiva' ; color : green ; font-weight : bold;margin-top:3%" align="center">Invoice Page</lable><hr>
+
+<div class="container">
+    <h1 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:3%" align="center">View Customer Detail</h1><hr>
+
+<div style="width:900px">
+    <table>
+        <tr>
+        <th>Booking Id</th>
+        <td>{{pro.book_id}}</td>
+        </tr>
+
+        <tr>
+        <th>Full Name</th>
+        <td>{{pro.signup.user.first_name}} {{pro.signup.user.last_name}}</td>
+        </tr>
+
+        <tr>
+        <th>Email Id</th>
+        <td>{{pro.signup.user.username}}</td>
+        </tr>
+
+        <tr>
+        <th>Contact</th>
+        <td>{{pro.signup.contact}}</td>
+        </tr>
+
+        <tr>
+        <th>City</th>
+        <td>{{pro.city}}</td>
+        </tr>
+
+        <tr>
+        <th>Address</th>
+        <td>{{pro.address}}</td>
+        </tr>
+    </table>
+</div><hr>
+    <div class="container">
+    <h1 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;" align="center">Booking & Tiffin Detail</h1><hr>
+<div style="width:800px">
+    <table>
+        <tr>
+        <th>Food Type</th>
+        <td>{{pro.food.food_name}}</td>
+        </tr>
+
+        <tr>
+        <th>Food title</th>
+        <td>{{pro.food.title}}</td>
+        </tr>
+
+        <tr>
+        <th>Food Description</th>
+        <td>{{pro.food.food_detail}}</td>
+        </tr>
+
+        <tr>
+        <th>Quantity</th>
+        <td>{{pro.quantity}}</td>
+        </tr>
+
+        <tr>
+        <th>Food Price</th>
+        <td>{{pro.food.price}}</td>
+        </tr>
+
+        <tr>
+        <th>From Date</th>
+        <td>{{pro.from_date}}</td>
+        </tr>
+
+        <tr>
+        <th>To Date</th>
+        <td>{{pro.to_date}}</td>
+        </tr>
+
+        <tr>
+        <th>Total</th>
+        <td>{{pro.total}} Rs.</td>
+        </tr>
+
+        <tr>
+        <th>Total Days</th>
+        <td>{{pro.day1}}</td>
+        </tr>
+    </table>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
